@@ -1,56 +1,70 @@
-ADMIN APLIKACIJA - AUTOMOBILSKI EKSPERIMENTI
+# Automotive Experiments Administration System
 
-1. Prvo u MySQL/phpMyAdmin pokrenuti SQL skriptu za bazu automobilski_eksperimenti.
-2. Proveriti database.cfg:
-   host=localhost
-   port=3306
-   db=automobilski_eksperimenti
-   user=root
-   password=root
-3. Korisnicki nalozi su u fajlu users.txt.
-   Pocetni nalog:
-   korisnicko ime: admin
-   lozinka: admin
-4. U IntelliJ otvoriti ovaj folder kao Maven projekat.
-5. Pokrenuti Main klasu ili komandu:
-   mvn javafx:run
+JavaFX desktop application connected to a MySQL relational database, developed for managing automotive experiments, laboratories, researchers, and scheduled testing sessions.
 
-Aplikacija je napravljena za ulogu administratora i ima:
-- login/sign up preko tekstualnog fajla users.txt,
-- pregled zakazanih sesija i eksperimenata,
-- promenu podataka izabrane zakazane sesije,
-- pregled i brisanje laboratorije samo ako u njoj ne radi nijedan istrazivac.
+## Technologies
 
-Kod je podeljen po MVC principu:
-- model: DTO klase, repozitorijumi i rad sa podacima,
-- view: JavaFX prikaz i tabele,
-- controller: reakcije na klik dugmeta i izbor reda u tabeli.
+- Java
+- JavaFX
+- MySQL
+- SQL
+- JDBC
+- Maven
+- MVC architecture
 
-NAPOMENA ZA TEST BRISANJA LABORATORIJE:
-U generisanim podacima skoro svaka laboratorija ima istrazivaca i druge povezane podatke,
-zato brisanje moze namerno da bude odbijeno. To je dobar dokaz pravila.
-Ako zelite da testirate uspesno brisanje, mozete u phpMyAdmin dodati posebnu laboratoriju
-bez istrazivaca i bez povezanih sesija/alata:
+## Features
 
-INSERT INTO tip_laboratorije(naziv, opis)
-VALUES ('Tip za test brisanja', 'Privremeni tip laboratorije za proveru aplikacije');
+- User login and registration
+- Viewing scheduled sessions and experiments
+- Editing scheduled session data
+- Viewing laboratory data
+- Managing researcher assignments to laboratories
+- Deleting laboratories only when no researchers are assigned to them
 
-INSERT INTO laboratorija(tip_laboratorije_id, naziv, opis_lokacije,
-maksimalno_opterecenje_kn, minimalna_temperatura_c, maksimalna_temperatura_c,
-maksimalno_trajanje_testa_h, status_kalibracije)
-VALUES (LAST_INSERT_ID(), 'Laboratorija za test brisanja', 'Privremena lokacija',
-100.00, -10.00, 80.00, 24, 'validna');
+## Database
 
-DODATO: upravljanje istrazivacima u laboratorijama
----------------------------------------------------
-U tabu "Istraživači u laboratorijama" mogu se dodati ili ukloniti veze iz tabele rad_u_laboratoriji.
-To je korisno za testiranje administratorskog zahteva: laboratorija sme da se obrise samo ako u njoj ne radi nijedan istrazivac.
+The application uses a relational MySQL database with multiple interconnected entities.
 
-Za test brisanja laboratorije:
-1. Otvori tab "Istraživači u laboratorijama".
-2. Izaberi red za laboratoriju koju želiš da obrišeš.
-3. Klikni "Ukloni istraživača iz laboratorije".
-4. Vrati se na tab "Laboratorije".
-5. Klikni "Ucitaj laboratorije".
-6. Izaberi laboratoriju koja sada ima 0 istraživača.
-7. Klikni "Obrisi izabranu laboratoriju".
+The project includes work with:
+
+- relational database design
+- primary and foreign keys
+- entity relationships
+- SQL queries
+- data modification
+- database constraints
+- data integrity
+- Java-to-MySQL integration through JDBC
+
+## Architecture
+
+The application follows the MVC pattern:
+
+- **Model** – DTO classes, repositories, and database access logic
+- **View** – JavaFX interface, tables, forms, and dialogs
+- **Controller** – user actions, event handling, and communication between the interface and application logic
+
+## Business Logic
+
+One of the implemented rules prevents a laboratory from being deleted while researchers are still assigned to it.
+
+The application also allows administrator users to manage researcher-to-laboratory assignments, which directly affects whether a laboratory can be removed.
+
+## Running the Project
+
+1. Run the provided SQL script in MySQL or phpMyAdmin.
+
+2. Check the `database.cfg` file:
+
+```text
+host=localhost
+port=3306
+db=automobilski_eksperimenti
+user=root
+password=root
+
+3. Default user account:
+Username: admin
+Password: admin
+
+## Screenshots of the application
