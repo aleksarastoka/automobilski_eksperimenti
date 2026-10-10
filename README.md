@@ -62,21 +62,37 @@ port=3306
 db=automobilski_eksperimenti
 user=root
 password=root
+```
 
 3. Default user account:
+
+```text
 Username: admin
 Password: admin
+```
 
-## Screenshots of the application
+4. Open the project in IntelliJ IDEA as a Maven project and run the `Main` class.
+
+Alternatively:
+
+```bash
+mvn javafx:run
+```
+
+## Screenshots
 
 ### Authentication
+
 ![Authentication](login.png)
 
 ### Scheduled Session Management
+
 ![Scheduled Session Management](scheduled-sessions.png)
 
 ### Laboratory Management
+
 ![Laboratory Management](laboratories.png)
 
 ### Researcher Assignment Management
+
 ![Researcher Assignment Management](researcher-management.png)
