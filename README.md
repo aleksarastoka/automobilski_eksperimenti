@@ -68,3 +68,15 @@ Username: admin
 Password: admin
 
 ## Screenshots of the application
+
+### Authentication
+![Authentication](login.png)
+
+### Scheduled Session Management
+![Scheduled Session Management](scheduled-sessions.png)
+
+### Laboratory Management
+![Laboratory Management](laboratories.png)
+
+### Researcher Assignment Management
+![Researcher Assignment Management](researcher-management.png)
